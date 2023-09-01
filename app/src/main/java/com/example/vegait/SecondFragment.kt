@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.vegait.databinding.FragmentSecondBinding
+import br.com.concrete.canarinho.watcher.ValorMonetarioWatcher
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -25,8 +26,17 @@ class SecondFragment : Fragment() {
     ): View? {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
+
+
         return binding.root
 
+    }
+
+    fun moneyMask(): ValorMonetarioWatcher {
+        return ValorMonetarioWatcher.Builder()
+            .comMantemZerosAoLimpar()
+            .comSimboloReal()
+            .build()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

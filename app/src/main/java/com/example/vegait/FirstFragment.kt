@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import br.com.concrete.canarinho.watcher.ValorMonetarioWatcher
 import com.bumptech.glide.Glide
 import com.example.vegait.api.ListProductsViewModel
 import com.example.vegait.api.RequestState
@@ -124,11 +125,19 @@ class FirstFragment : Fragment() {
                         .circleCrop()
                         .into(ivProduct)
                     tvTitle.text = product.title
+                    tvPrice.addTextChangedListener(moneyMask())
                     tvPrice.text = product.price.toString()
                     root.setOnClickListener {
                         fragment.findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
                     }
                 }
+            }
+
+            private fun moneyMask(): ValorMonetarioWatcher {
+                return ValorMonetarioWatcher.Builder()
+                    .comMantemZerosAoLimpar()
+                    .comSimboloReal()
+                    .build()
             }
         }
     }
