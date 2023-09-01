@@ -1,5 +1,6 @@
 package com.example.vegait.api
 
+import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -14,15 +15,15 @@ interface DummyService {
      *
      * @return
      */
-    @GET("/products")
-    suspend fun products(): List<ProductsResponse>
+    @GET("products")
+    suspend fun products(): ProductsResponse
 
-    @PUT("/products/{id}")
-    suspend fun update(@Path("id") id: Int): List<ProductUpdateResponse>
+    //@PUT("products/{id}")
+    //suspend fun update(/*@Path("id") id: Int*/)
 
-    @POST("/products/add")
-    suspend fun create(): List<ProductCreatedResponse>
+    //@POST("products/add")
+    //suspend fun create(/*@Body request: ProductAddRequest*/)
 
-    @DELETE("/products/{id}")
-    suspend fun delete(@Path("id") id: Int): List<ProductDeletedResponse>
+    //@DELETE("products/{id}")
+    //suspend fun delete(/*@Path("id") id: Int*/)
 }

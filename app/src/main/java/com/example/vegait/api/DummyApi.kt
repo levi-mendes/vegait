@@ -8,9 +8,9 @@ class DummyApi(retrofit: Retrofit) {
 
     suspend fun list() = service.products()
 
-    suspend fun add() = service.create()
-
-    suspend fun update(id: Int) = service.update(id)
-
-    suspend fun delete(id: Int) = service.delete(id)
+//    suspend fun add(request: ProductAddRequest) = service.create()
+//
+//    suspend fun update(id: Int) = service.update()
+//
+//    suspend fun delete(id: Int) = service.delete()
 }
