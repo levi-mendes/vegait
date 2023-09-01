@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -49,17 +49,13 @@ class FirstFragment : Fragment() {
         configList()
         addObservable()
         viewModel.listProducts()
-
-//        binding.buttonFirst.setOnClickListener {
-//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-//        }
     }
 
     private fun addObservable() {
         viewModel.products.observe(requireActivity()) {
             when (it) {
                 is RequestState.Success -> {
-                    loadList(it.data)
+                    binding.rvPoducts.adapter = ProductListAdapter(this, it.data)
                     binding.pbLoading.hide()
                 }
                 is RequestState.Loading -> {
@@ -69,19 +65,11 @@ class FirstFragment : Fragment() {
                 is RequestState.Error -> {
                     binding.btTryAgain.visibility = View.VISIBLE
                     binding.pbLoading.hide()
-                    showError()
+                    Toast.makeText(requireContext(), "", Toast.LENGTH_LONG).show()
                 }
             }
 
         }
-    }
-
-    private fun showError() {
-        Toast.makeText(requireContext(), "", Toast.LENGTH_LONG).show()
-    }
-
-    private fun loadList(products: List<Product>) {
-        binding.rvPoducts.adapter = ProductListAdapter(requireActivity(), products)
     }
 
     override fun onDestroyView() {
@@ -90,7 +78,7 @@ class FirstFragment : Fragment() {
     }
 
     class ProductListAdapter(
-        val context: FragmentActivity,
+        val context: Fragment,
         val products: List<Product>) :
         RecyclerView.Adapter<ProductListAdapter.MyViewHolder>() {
 
@@ -111,17 +99,19 @@ class FirstFragment : Fragment() {
 
         class MyViewHolder(
             private val itemBiding: ItemProductListBinding,
-            private val activity: FragmentActivity):
+            private val fragment: Fragment):
             RecyclerView.ViewHolder(itemBiding.root) {
 
             fun bind(product: Product) {
                 with(itemBiding) {
-                    Glide.with(activity)
+                    Glide.with(fragment)
                         .load(product.thumbnail)
                         .centerCrop()
                         .into(ivProduct)
                     tvTitle.text = product.title
+                    tvPrice.text = product.price.toString()
                     root.setOnClickListener {
+                        fragment.findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
                     }
                 }
             }
