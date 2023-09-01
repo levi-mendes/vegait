@@ -5,9 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.vegait.api.ListProductsViewModel
+import com.example.vegait.api.RequestState
 import com.example.vegait.databinding.FragmentFirstBinding
+import com.example.vegait.databinding.ItemProductListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -29,9 +35,19 @@ class FirstFragment : Fragment() {
 
     }
 
+    private fun configList() {
+        binding.rvPoducts.apply {
+            layoutManager = LinearLayoutManager(context)
+//            addItemDecoration(LineItemDecoration(context, LinearLayout.VERTICAL))
+            setHasFixedSize(true)
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        configList()
+        addObservable()
         viewModel.listProducts()
 
 //        binding.buttonFirst.setOnClickListener {
@@ -39,8 +55,76 @@ class FirstFragment : Fragment() {
 //        }
     }
 
+    private fun addObservable() {
+        viewModel.products.observe(requireActivity()) {
+            when (it) {
+                is RequestState.Success -> {
+                    loadList(it.data)
+                    binding.pbLoading.hide()
+                }
+                is RequestState.Loading -> {
+                    binding.btTryAgain.visibility = View.GONE
+                    binding.pbLoading.show()
+                }
+                is RequestState.Error -> {
+                    binding.btTryAgain.visibility = View.VISIBLE
+                    binding.pbLoading.hide()
+                    showError()
+                }
+            }
+
+        }
+    }
+
+    private fun showError() {
+        Toast.makeText(requireContext(), "", Toast.LENGTH_LONG).show()
+    }
+
+    private fun loadList(products: List<Product>) {
+        binding.rvPoducts.adapter = ProductListAdapter(requireActivity(), products)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    class ProductListAdapter(
+        val context: FragmentActivity,
+        val products: List<Product>) :
+        RecyclerView.Adapter<ProductListAdapter.MyViewHolder>() {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+            val itemBiding = ItemProductListBinding.inflate(LayoutInflater.from(parent.context),
+                parent, false)
+
+            return MyViewHolder(itemBiding, context)
+        }
+
+        override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+            val musica = products[position]
+
+            holder.bind(musica)
+        }
+
+        override fun getItemCount() = products.size
+
+        class MyViewHolder(
+            private val itemBiding: ItemProductListBinding,
+            private val activity: FragmentActivity):
+            RecyclerView.ViewHolder(itemBiding.root) {
+
+            fun bind(product: Product) {
+                with(itemBiding) {
+                    Glide.with(activity)
+                        .load(product.thumbnail)
+                        .centerCrop()
+                        .into(ivProduct)
+                    tvTitle.text = product.title
+                    root.setOnClickListener {
+                    }
+                }
+            }
+        }
     }
 }
