@@ -48,9 +48,22 @@ class FirstFragment : Fragment() {
 
         configList()
         addObservable()
-        viewModel.listProducts()
 
-        binding.btTryAgain.setOnClickListener { viewModel.listProducts() }
+        callListProducts()
+
+        binding.btTryAgain.setOnClickListener {
+            callListProducts()
+        }
+    }
+
+    private fun callListProducts() {
+        if (!InternetUtil.isNetworkConnected) {
+            Toast.makeText(requireContext(), "sem conexão com a internet", Toast.LENGTH_LONG).show()
+            binding.btTryAgain.visibility = View.VISIBLE
+            binding.pbLoading.hide()
+        } else {
+            viewModel.listProducts()
+        }
     }
 
     private fun addObservable() {
