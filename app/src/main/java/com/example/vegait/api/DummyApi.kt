@@ -6,7 +6,9 @@ class DummyApi(retrofit: Retrofit) {
 
     private val service by lazy { retrofit.create(DummyService::class.java) }
 
-    suspend fun list() = service.products()
+    suspend fun list(): ProductsResponse {
+        return service.products()
+    }
 
 //    suspend fun add(request: ProductAddRequest) = service.create()
 //

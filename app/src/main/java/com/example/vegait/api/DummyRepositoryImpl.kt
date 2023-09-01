@@ -6,7 +6,8 @@ import com.example.vegait.Product
 class DummyRepositoryImpl(private val api: DummyApi): DummyRepository {
 
     override suspend fun products(): List<Product> {
-        return api.list().products
+        val response: ProductsResponse = api.list()
+        return response.products
     }
 
     override suspend fun add() {

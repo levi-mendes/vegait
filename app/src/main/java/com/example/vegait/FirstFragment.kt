@@ -49,14 +49,16 @@ class FirstFragment : Fragment() {
         configList()
         addObservable()
         viewModel.listProducts()
+
+        binding.btTryAgain.setOnClickListener { viewModel.listProducts() }
     }
 
     private fun addObservable() {
         viewModel.products.observe(requireActivity()) {
             when (it) {
                 is RequestState.Success -> {
-                    binding.rvPoducts.adapter = ProductListAdapter(this, it.data)
                     binding.pbLoading.hide()
+                    binding.rvPoducts.adapter = ProductListAdapter(this, it.data)
                 }
                 is RequestState.Loading -> {
                     binding.btTryAgain.visibility = View.GONE
@@ -106,6 +108,7 @@ class FirstFragment : Fragment() {
                 with(itemBiding) {
                     Glide.with(fragment)
                         .load(product.thumbnail)
+//                        .circleCrop()
                         .centerCrop()
                         .into(ivProduct)
                     tvTitle.text = product.title
