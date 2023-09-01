@@ -12,11 +12,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_title"
         android:id="@+id/iv_product"
+        android:layout_margin="6dp"
         android:layout_width="50dp"
         android:layout_height="50dp" />
 
     <TextView
         android:id="@+id/tv_title"
+        android:layout_marginStart="6dp"
         app:layout_constraintStart_toEndOf="@id/iv_product"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/tv_price"
@@ -25,6 +27,7 @@
 
     <TextView
         android:id="@+id/tv_price"
+        android:layout_marginStart="6dp"
         app:layout_constraintStart_toEndOf="@id/iv_product"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
         app:layout_constraintBottom_toBottomOf="parent"

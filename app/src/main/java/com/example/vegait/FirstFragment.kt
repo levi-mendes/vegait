@@ -121,8 +121,7 @@ class FirstFragment : Fragment() {
                 with(itemBiding) {
                     Glide.with(fragment)
                         .load(product.thumbnail)
-//                        .circleCrop()
-                        .centerCrop()
+                        .circleCrop()
                         .into(ivProduct)
                     tvTitle.text = product.title
                     tvPrice.text = product.price.toString()
