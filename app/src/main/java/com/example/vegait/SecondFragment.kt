@@ -40,11 +40,10 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.let {
-//            Fir
-        }
         addObserve()
-        viewModel.getProduct(id)
+        arguments?.getInt("product_id").let {
+            viewModel.getProduct(it!!)
+        }
     }
 
     private fun loadData(product: ProductEntity) {
