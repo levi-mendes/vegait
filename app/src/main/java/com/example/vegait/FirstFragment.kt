@@ -15,6 +15,7 @@ import com.example.vegait.api.ListProductsViewModel
 import com.example.vegait.api.RequestState
 import com.example.vegait.databinding.FragmentFirstBinding
 import com.example.vegait.databinding.ItemProductListBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**

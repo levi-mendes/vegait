@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.vegait.databinding.FragmentSecondBinding
@@ -11,6 +12,7 @@ import br.com.concrete.canarinho.watcher.ValorMonetarioWatcher
 import com.bumptech.glide.Glide
 import com.example.vegait.api.ProductDetailViewModel
 import com.example.vegait.api.RequestState
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -40,10 +42,11 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        addObserve()
-        arguments?.getInt("product_id").let {
-            viewModel.getProduct(it!!)
-        }
+//        (requireActivity() as  MainActivity).findViewById<FloatingActionButton>(R.id.fab)!!.visibility = GONE
+//        addObserve()
+//        arguments?.getInt("product_id").let {
+//            viewModel.getProduct(it!!)
+//        }
     }
 
     private fun loadData(product: ProductEntity) {
