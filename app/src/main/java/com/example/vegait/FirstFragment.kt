@@ -20,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class FirstFragment : Fragment(R.layout.fragment_first) {
 
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
@@ -95,7 +95,7 @@ class FirstFragment : Fragment() {
 
     class ProductListAdapter(
         val context: Fragment,
-        val products: List<Product>) :
+        val products: List<ProductEntity>) :
         RecyclerView.Adapter<ProductListAdapter.MyViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -118,7 +118,7 @@ class FirstFragment : Fragment() {
             private val fragment: Fragment):
             RecyclerView.ViewHolder(itemBiding.root) {
 
-            fun bind(product: Product) {
+            fun bind(product: ProductEntity) {
                 with(itemBiding) {
                     Glide.with(fragment)
                         .load(product.thumbnail)

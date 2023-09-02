@@ -10,6 +10,10 @@ class DummyApi(retrofit: Retrofit) {
         return service.products()
     }
 
+    suspend fun productDetail(id: Int): ProductDetailResponse {
+        return service.productDetail(id)
+    }
+
 //    suspend fun add(request: ProductAddRequest) = service.create()
 //
 //    suspend fun update(id: Int) = service.update()

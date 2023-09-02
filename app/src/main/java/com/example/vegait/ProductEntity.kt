@@ -1,6 +1,6 @@
 package com.example.vegait
 
-data class Product(
+data class ProductEntity(
     val id: Int,
     val title: String,
     val description: String,
@@ -10,5 +10,5 @@ data class Product(
     val stock: Int,
     val brand: String,
     val category: String,
-    val thumbnail: String,
+    val thumbnail: String
 )

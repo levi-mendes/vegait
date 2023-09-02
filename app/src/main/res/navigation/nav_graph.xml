@@ -24,5 +24,18 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+
+        <argument
+            android:name="id_product"
+            android:defaultValue="0"
+            app:argType="integer" />
+
     </fragment>
+
+    <!--
+        <argument
+            android:name="id_musica"
+            android:defaultValue="0"
+            app:argType="integer" />
+    -->
 </navigation>

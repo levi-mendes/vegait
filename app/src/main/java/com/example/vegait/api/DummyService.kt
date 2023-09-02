@@ -18,6 +18,9 @@ interface DummyService {
     @GET("products")
     suspend fun products(): ProductsResponse
 
+    @GET("products/{id}")
+    suspend fun productDetail(@Path("id") id: Int): ProductDetailResponse
+
     //@PUT("products/{id}")
     //suspend fun update(/*@Path("id") id: Int*/)
 

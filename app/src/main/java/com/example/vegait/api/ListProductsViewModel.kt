@@ -5,15 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.vegait.ListProductUseCase
-import com.example.vegait.Product
+import com.example.vegait.ProductEntity
 import kotlinx.coroutines.launch
 
 class ListProductsViewModel(
     private val useCase: ListProductUseCase
 ): ViewModel() {
 
-    private var _products = MutableLiveData<RequestState<List<Product>>>()
-    val products: LiveData<RequestState<List<Product>>>
+    private var _products = MutableLiveData<RequestState<List<ProductEntity>>>()
+    val products: LiveData<RequestState<List<ProductEntity>>>
         get() = _products
 
     fun listProducts() {

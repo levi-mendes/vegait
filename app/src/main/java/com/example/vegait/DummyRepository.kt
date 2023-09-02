@@ -7,7 +7,8 @@ import com.example.vegait.api.ProductUpdateResponse
 
 interface DummyRepository {
 
-    suspend fun products(): List<Product>
+    suspend fun products(): List<ProductEntity>
+    suspend fun productDetail(id: Int): ProductEntity
 
     suspend fun add()
 
