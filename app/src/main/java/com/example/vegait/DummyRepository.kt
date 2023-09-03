@@ -14,5 +14,5 @@ interface DummyRepository {
 
     suspend fun update()
 
-    suspend fun delete()
+    suspend fun delete(id: Int): ProductEntity
 }

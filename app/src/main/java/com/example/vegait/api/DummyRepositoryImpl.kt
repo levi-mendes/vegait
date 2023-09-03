@@ -24,7 +24,8 @@ class DummyRepositoryImpl(private val api: DummyApi): DummyRepository {
 
     }
 
-    override suspend fun delete() {
-
+    override suspend fun delete(id: Int): ProductEntity {
+        val response: ProductDeletedResponse = api.delete(id)
+        return response.toEntity()
     }
 }

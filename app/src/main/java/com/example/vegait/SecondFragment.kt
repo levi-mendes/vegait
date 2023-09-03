@@ -43,9 +43,9 @@ class SecondFragment : Fragment() {
 
 //        (requireActivity() as  MainActivity).findViewById<FloatingActionButton>(R.id.fab)!!.visibility = GONE
         addObserve()
-        arguments?.getInt("product_id").let {
-            viewModel.getProduct(it!!)
-        }
+        val productId = arguments?.getInt("product_id")
+        viewModel.getProduct(productId!!)
+        binding.btDelete.setOnClickListener { viewModel.deleteProduct(productId) }
     }
 
     private fun loadData(product: ProductEntity) {
@@ -76,6 +76,20 @@ class SecondFragment : Fragment() {
                 is RequestState.Error -> {
                     binding.pbLoading.hide()
                     Toast.makeText(requireContext(), "", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+
+        viewModel.deleteProduct.observe(requireActivity()) {
+            when (it) {
+                is RequestState.Success -> {
+                    binding.pbLoading.hide()
+                    Toast.makeText(requireContext(), "delete simulation succesfully !!!", Toast.LENGTH_LONG).show()
+                }
+                is RequestState.Loading -> binding.pbLoading.show()
+                is RequestState.Error -> {
+                    binding.pbLoading.hide()
+                    Toast.makeText(requireContext(), "erro na simulacao de delete", Toast.LENGTH_LONG).show()
                 }
             }
         }

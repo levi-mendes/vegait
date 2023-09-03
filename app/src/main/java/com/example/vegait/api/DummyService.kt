@@ -27,6 +27,6 @@ interface DummyService {
     //@POST("products/add")
     //suspend fun create(/*@Body request: ProductAddRequest*/)
 
-    //@DELETE("products/{id}")
-    //suspend fun delete(/*@Path("id") id: Int*/)
+    @DELETE("products/{id}")
+    suspend fun delete(@Path("id") id: Int): ProductDeletedResponse
 }

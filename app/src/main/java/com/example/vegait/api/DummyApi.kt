@@ -18,5 +18,7 @@ class DummyApi(retrofit: Retrofit) {
 //
 //    suspend fun update(id: Int) = service.update()
 //
-//    suspend fun delete(id: Int) = service.delete()
+    suspend fun delete(id: Int): ProductDeletedResponse {
+        return service.delete(id)
+    }
 }
