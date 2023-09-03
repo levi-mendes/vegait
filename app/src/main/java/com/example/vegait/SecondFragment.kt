@@ -21,7 +21,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SecondFragment : Fragment() {
 
     private val viewModel: ProductDetailViewModel by viewModel()
-
     private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding!!
 
@@ -43,17 +42,27 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 //        (requireActivity() as  MainActivity).findViewById<FloatingActionButton>(R.id.fab)!!.visibility = GONE
-//        addObserve()
-//        arguments?.getInt("product_id").let {
-//            viewModel.getProduct(it!!)
-//        }
+        addObserve()
+        arguments?.getInt("product_id").let {
+            viewModel.getProduct(it!!)
+        }
     }
 
     private fun loadData(product: ProductEntity) {
-        Glide.with(this)
-            .load(product.thumbnail)
-            .circleCrop()
-            .into(binding.ivProductBig)
+        with(binding) {
+            Glide.with(requireParentFragment())
+                .load(product.thumbnail)
+                .circleCrop()
+                .into(binding.ivProductBig)
+            etTitle.setText(product.title)
+            etDescription.setText(product.description)
+            etPrice.setText(product.price.toString())
+            etDiscount.setText(product.discountPercentage.toString())
+            etRating.setText(product.rating.toString())
+            etStock.setText(product.stock.toString())
+            etBrand.setText(product.brand)
+            etCategory.setText(product.category)
+        }
     }
 
     private fun addObserve() {
