@@ -25,8 +25,8 @@ class DummyApi(retrofit: Retrofit) {
         return service.create(request = request)
     }
 
-    suspend fun update(product: UpdateProductRequest): ProductUpdateDTO {
-        return service.update(product, product.id)
+    suspend fun update(id: Int, product: UpdateProductRequest): ProductUpdateDTO {
+        return service.update(product, id)
     }
 
     suspend fun delete(id: Int): ProductDeletedDTO {

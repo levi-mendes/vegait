@@ -41,7 +41,7 @@ fun ProductDetailDTO.toEntity(): ProductEntity {
 }
 
 fun ProductEntity.toProductRequest(): UpdateProductRequest {
-    return UpdateProductRequest(id = id, title = title)
+    return UpdateProductRequest(title = title)
 }
 
 fun ProductDeletedDTO.toEntity(): ProductEntity {

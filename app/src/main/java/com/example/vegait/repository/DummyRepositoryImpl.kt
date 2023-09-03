@@ -26,7 +26,7 @@ class DummyRepositoryImpl(private val api: DummyApi): DummyRepository {
 
     override suspend fun update(product: ProductEntity): ProductEntity {
         val response: ProductEntity =
-            api.update(product = product.toProductRequest()).toEntity()
+            api.update(product = product.toProductRequest(), id = product.id).toEntity()
 
         return response
     }

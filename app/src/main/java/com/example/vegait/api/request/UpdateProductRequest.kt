@@ -1,6 +1,3 @@
 package com.example.vegait.api.request
 
-data class UpdateProductRequest(
-    val id: Int,
-    val title: String
-)
+data class UpdateProductRequest(val title: String)
