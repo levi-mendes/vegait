@@ -1,11 +1,11 @@
 package com.example.vegait.di
 
-import com.example.vegait.DeleteProductUseCase
-import com.example.vegait.ListProductUseCase
-import com.example.vegait.ProductDetailUseCase
-import com.example.vegait.UpdateProductUseCase
-import com.example.vegait.api.ListProductsViewModel
-import com.example.vegait.api.ProductDetailViewModel
+import com.example.vegait.usecase.DeleteProductUseCase
+import com.example.vegait.usecase.ListProductUseCase
+import com.example.vegait.usecase.ProductDetailUseCase
+import com.example.vegait.usecase.UpdateProductUseCase
+import com.example.vegait.viewmodel.ListProductsViewModel
+import com.example.vegait.viewmodel.ProductDetailViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

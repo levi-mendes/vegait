@@ -1,7 +1,7 @@
 package com.example.vegait.di
 
-import com.example.vegait.DummyRepository
-import com.example.vegait.api.DummyRepositoryImpl
+import com.example.vegait.repository.DummyRepository
+import com.example.vegait.repository.DummyRepositoryImpl
 import org.koin.dsl.module
 
 val appModule = module {

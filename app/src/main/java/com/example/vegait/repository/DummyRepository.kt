@@ -1,9 +1,6 @@
-package com.example.vegait
+package com.example.vegait.repository
 
-import com.example.vegait.api.ProductAddRequest
-import com.example.vegait.api.ProductCreatedResponse
-import com.example.vegait.api.ProductDeletedResponse
-import com.example.vegait.api.ProductUpdateResponse
+import com.example.vegait.entity.ProductEntity
 
 interface DummyRepository {
 

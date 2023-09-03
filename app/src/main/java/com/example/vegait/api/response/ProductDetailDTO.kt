@@ -1,6 +1,6 @@
-package com.example.vegait.api
+package com.example.vegait.api.response
 
-data class ProductUpdateResponse(
+data class ProductDetailDTO(
     val id: Int,
     val title: String,
     val description: String,
@@ -11,4 +11,4 @@ data class ProductUpdateResponse(
     val brand: String,
     val category: String,
     val thumbnail: String
-)
+    )

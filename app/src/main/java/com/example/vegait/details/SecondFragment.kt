@@ -1,4 +1,4 @@
-package com.example.vegait
+package com.example.vegait.details
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,8 @@ import android.widget.Toast
 import com.example.vegait.databinding.FragmentSecondBinding
 import br.com.concrete.canarinho.watcher.ValorMonetarioWatcher
 import com.bumptech.glide.Glide
-import com.example.vegait.api.ProductDetailViewModel
+import com.example.vegait.entity.ProductEntity
+import com.example.vegait.viewmodel.ProductDetailViewModel
 import com.example.vegait.api.RequestState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

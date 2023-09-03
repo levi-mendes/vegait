@@ -1,13 +1,14 @@
-package com.example.vegait.api
+package com.example.vegait.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.vegait.DeleteProductUseCase
-import com.example.vegait.ProductDetailUseCase
-import com.example.vegait.ProductEntity
-import com.example.vegait.UpdateProductUseCase
+import com.example.vegait.usecase.DeleteProductUseCase
+import com.example.vegait.usecase.ProductDetailUseCase
+import com.example.vegait.entity.ProductEntity
+import com.example.vegait.usecase.UpdateProductUseCase
+import com.example.vegait.api.RequestState
 import kotlinx.coroutines.launch
 
 class ProductDetailViewModel(

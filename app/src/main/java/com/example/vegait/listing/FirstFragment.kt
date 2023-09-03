@@ -1,4 +1,4 @@
-package com.example.vegait
+package com.example.vegait.listing
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,11 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.concrete.canarinho.watcher.ValorMonetarioWatcher
 import com.bumptech.glide.Glide
-import com.example.vegait.api.ListProductsViewModel
+import com.example.vegait.InternetUtil
+import com.example.vegait.entity.ProductEntity
+import com.example.vegait.R
+import com.example.vegait.viewmodel.ListProductsViewModel
 import com.example.vegait.api.RequestState
 import com.example.vegait.databinding.FragmentFirstBinding
 import com.example.vegait.databinding.ItemProductListBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**

@@ -1,11 +1,12 @@
-package com.example.vegait.api
+package com.example.vegait.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.vegait.ListProductUseCase
-import com.example.vegait.ProductEntity
+import com.example.vegait.usecase.ListProductUseCase
+import com.example.vegait.entity.ProductEntity
+import com.example.vegait.api.RequestState
 import kotlinx.coroutines.launch
 
 class ListProductsViewModel(

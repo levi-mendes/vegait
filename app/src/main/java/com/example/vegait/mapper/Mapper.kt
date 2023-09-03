@@ -1,9 +1,11 @@
 package com.example.vegait
 
-import com.example.vegait.api.ProductDeletedResponse
-import com.example.vegait.api.ProductDetailResponse
-import com.example.vegait.api.ProductUpdateResponse
-import com.example.vegait.api.UpdateProductRequest
+import com.example.vegait.api.response.ProductDeletedDTO
+import com.example.vegait.api.response.ProductDetailDTO
+import com.example.vegait.api.response.ProductUpdateDTO
+import com.example.vegait.api.request.UpdateProductRequest
+import com.example.vegait.api.response.ProductDTO
+import com.example.vegait.entity.ProductEntity
 
 
 fun ProductDTO.toEntity(): ProductEntity {
@@ -21,7 +23,7 @@ fun ProductDTO.toEntity(): ProductEntity {
     )
 }
 
-fun ProductDetailResponse.toEntity(): ProductEntity {
+fun ProductDetailDTO.toEntity(): ProductEntity {
     return ProductEntity(
         id = id,
         title = title,
@@ -40,7 +42,7 @@ fun ProductEntity.toProductRequest(): UpdateProductRequest {
     return UpdateProductRequest(id = id, title = title)
 }
 
-fun ProductDeletedResponse.toEntity(): ProductEntity {
+fun ProductDeletedDTO.toEntity(): ProductEntity {
     return ProductEntity(
         id = id,
         title = title,
@@ -55,7 +57,7 @@ fun ProductDeletedResponse.toEntity(): ProductEntity {
     )
 }
 
-fun ProductUpdateResponse.toEntity(): ProductEntity {
+fun ProductUpdateDTO.toEntity(): ProductEntity {
     return ProductEntity(
         id = id,
         title = title,

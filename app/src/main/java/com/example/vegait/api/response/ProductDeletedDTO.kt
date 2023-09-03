@@ -1,6 +1,6 @@
-package com.example.vegait
+package com.example.vegait.api.response
 
-data class ProductDTO(
+data class ProductDeletedDTO(
     val id: Int,
     val title: String,
     val description: String,

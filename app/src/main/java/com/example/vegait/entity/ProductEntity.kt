@@ -1,6 +1,6 @@
-package com.example.vegait.api
+package com.example.vegait.entity
 
-data class ProductDetailResponse(
+data class ProductEntity(
     val id: Int,
     val title: String,
     val description: String,
@@ -11,4 +11,4 @@ data class ProductDetailResponse(
     val brand: String,
     val category: String,
     val thumbnail: String
-    )
+)

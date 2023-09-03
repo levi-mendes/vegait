@@ -1,6 +1,7 @@
-package com.example.vegait
+package com.example.vegait.usecase
 
-import com.example.vegait.api.DummyRepositoryImpl
+import com.example.vegait.entity.ProductEntity
+import com.example.vegait.repository.DummyRepositoryImpl
 
 class ProductDetailUseCase(private val repository: DummyRepositoryImpl) {
 

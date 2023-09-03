@@ -1,4 +1,4 @@
-package com.example.vegait.api
+package com.example.vegait.api.request
 
 data class UpdateProductRequest(
     val id: Int,
