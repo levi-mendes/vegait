@@ -43,8 +43,25 @@ class SecondFragment : Fragment() {
 //        (requireActivity() as  MainActivity).findViewById<FloatingActionButton>(R.id.fab)!!.visibility = GONE
         addObserve()
         val productId = arguments?.getInt("product_id")
-        viewModel.getProduct(productId!!)
-        binding.btDelete.setOnClickListener { viewModel.deleteProduct(productId) }
+
+        productId?.let {
+            if (it > 0) {
+                viewModel.getProduct(productId)
+                binding.btDelete.setOnClickListener { viewModel.deleteProduct(productId) }
+            }
+        }
+
+        val addProduct = arguments?.getBoolean("add_product")
+
+        addProduct?.let {
+            if (it) {
+                binding.btSave.setOnClickListener {
+                    viewModel.addProduct(binding.etTitle.text.toString())
+                }
+
+                binding.btDelete.visibility = View.INVISIBLE
+            }
+        }
     }
 
     private fun loadData(product: ProductEntity) {
@@ -105,6 +122,20 @@ class SecondFragment : Fragment() {
                 is RequestState.Error -> {
                     binding.pbLoading.hide()
                     Toast.makeText(requireContext(), "erro na simulacao de UPDATE", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+
+        viewModel.addProduct.observe(requireActivity()) {
+            when (it) {
+                is RequestState.Success -> {
+                    binding.pbLoading.hide()
+                    Toast.makeText(requireContext(), "ADD simulation succesfully !!!", Toast.LENGTH_LONG).show()
+                }
+                is RequestState.Loading -> binding.pbLoading.show()
+                is RequestState.Error -> {
+                    binding.pbLoading.hide()
+                    Toast.makeText(requireContext(), "erro na simulacao de ADD", Toast.LENGTH_LONG).show()
                 }
             }
         }

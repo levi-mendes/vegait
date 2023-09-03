@@ -4,7 +4,9 @@ import com.example.vegait.api.response.ProductDeletedDTO
 import com.example.vegait.api.response.ProductDetailDTO
 import com.example.vegait.api.response.ProductUpdateDTO
 import com.example.vegait.api.request.UpdateProductRequest
+import com.example.vegait.api.response.ProductCreatedDTO
 import com.example.vegait.api.response.ProductDTO
+import com.example.vegait.entity.ProductCreatedEntity
 import com.example.vegait.entity.ProductEntity
 
 
@@ -69,5 +71,12 @@ fun ProductUpdateDTO.toEntity(): ProductEntity {
         brand = brand,
         category = category,
         thumbnail = thumbnail
+    )
+}
+
+fun ProductCreatedDTO.toEntity(): ProductCreatedEntity {
+    return ProductCreatedEntity(
+        id = id,
+        title = title
     )
 }

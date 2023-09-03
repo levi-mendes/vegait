@@ -1,4 +1,3 @@
 package com.example.vegait.api.response
 
-class ProductCreatedDTO {
-}
+data class ProductCreatedDTO(val id: Int, val title: String)

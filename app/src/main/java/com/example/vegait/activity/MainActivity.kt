@@ -1,6 +1,7 @@
 package com.example.vegait.activity
 
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -28,7 +29,8 @@ class MainActivity : BaseActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.fab.setOnClickListener {
-            navController.navigate(R.id.action_FirstFragment_to_SecondFragment)
+            val bundle = bundleOf("add_product" to true)
+            navController.navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
         }
     }
 

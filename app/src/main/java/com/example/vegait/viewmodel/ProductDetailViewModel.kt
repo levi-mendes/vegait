@@ -9,12 +9,15 @@ import com.example.vegait.usecase.ProductDetailUseCase
 import com.example.vegait.entity.ProductEntity
 import com.example.vegait.usecase.UpdateProductUseCase
 import com.example.vegait.api.RequestState
+import com.example.vegait.entity.ProductCreatedEntity
+import com.example.vegait.usecase.AddProductUseCase
 import kotlinx.coroutines.launch
 
 class ProductDetailViewModel(
     private val useCase: ProductDetailUseCase,
     private val useCaseDelete: DeleteProductUseCase,
-    private val useCaseUpdate: UpdateProductUseCase
+    private val useCaseUpdate: UpdateProductUseCase,
+    private val useCaseAdd: AddProductUseCase
 ): ViewModel() {
 
     private var _product = MutableLiveData<RequestState<ProductEntity>>()
@@ -28,6 +31,10 @@ class ProductDetailViewModel(
     private var _updateProduct = MutableLiveData<RequestState<ProductEntity>>()
     val updateProduct: LiveData<RequestState<ProductEntity>>
         get() = _updateProduct
+
+    private var _addProduct = MutableLiveData<RequestState<ProductCreatedEntity>>()
+    val addProduct: LiveData<RequestState<ProductCreatedEntity>>
+        get() = _addProduct
 
     fun getProduct(id: Int) {
         _product.value = RequestState.Loading
@@ -53,6 +60,15 @@ class ProductDetailViewModel(
         viewModelScope.launch {
             val response = useCaseUpdate.update(product = product)
             _updateProduct.value = RequestState.Success(response)
+        }
+    }
+
+    fun addProduct(title: String) {
+        _addProduct.value = RequestState.Loading
+
+        viewModelScope.launch {
+            val response = useCaseAdd.addProduct(title = title)
+            _addProduct.value = RequestState.Success(response)
         }
     }
 }

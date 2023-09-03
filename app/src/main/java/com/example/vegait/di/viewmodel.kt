@@ -1,5 +1,6 @@
 package com.example.vegait.di
 
+import com.example.vegait.usecase.AddProductUseCase
 import com.example.vegait.usecase.DeleteProductUseCase
 import com.example.vegait.usecase.ListProductUseCase
 import com.example.vegait.usecase.ProductDetailUseCase
@@ -19,7 +20,8 @@ val viewModel = module {
         ProductDetailViewModel(
             ProductDetailUseCase(repository = get()),
             DeleteProductUseCase(repository = get()),
-            UpdateProductUseCase(repository = get())
+            UpdateProductUseCase(repository = get()),
+            AddProductUseCase(repository = get())
         )
     }
 }

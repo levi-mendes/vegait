@@ -1,6 +1,8 @@
 package com.example.vegait.api
 
+import com.example.vegait.api.request.ProductAddRequest
 import com.example.vegait.api.request.UpdateProductRequest
+import com.example.vegait.api.response.ProductCreatedDTO
 import com.example.vegait.api.response.ProductDeletedDTO
 import com.example.vegait.api.response.ProductDetailDTO
 import com.example.vegait.api.response.ProductUpdateDTO
@@ -19,8 +21,10 @@ class DummyApi(retrofit: Retrofit) {
         return service.productDetail(id)
     }
 
-//    suspend fun add(request: ProductAddRequest) = service.create()
-//
+    suspend fun add(request: ProductAddRequest): ProductCreatedDTO {
+        return service.create(request = request)
+    }
+
     suspend fun update(product: UpdateProductRequest): ProductUpdateDTO {
         return service.update(product, product.id)
     }

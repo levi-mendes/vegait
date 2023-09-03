@@ -1,4 +1,3 @@
 package com.example.vegait.api.request
 
-class ProductAddRequest {
-}
+data class ProductAddRequest(val title: String)
