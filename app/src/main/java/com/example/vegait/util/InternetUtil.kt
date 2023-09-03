@@ -1,4 +1,4 @@
-package com.example.vegait
+package com.example.vegait.util
 
 import android.content.Context
 import android.net.ConnectivityManager

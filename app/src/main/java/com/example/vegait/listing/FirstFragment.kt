@@ -18,7 +18,7 @@ import com.example.vegait.viewmodel.ListProductsViewModel
 import com.example.vegait.api.RequestState
 import com.example.vegait.databinding.FragmentFirstBinding
 import com.example.vegait.databinding.ItemProductListBinding
-import com.example.vegait.isOnline
+import com.example.vegait.util.isOnline
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**

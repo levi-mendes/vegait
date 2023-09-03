@@ -6,8 +6,8 @@ import com.example.vegait.api.request.ProductAddRequest
 import com.example.vegait.api.response.ProductDeletedDTO
 import com.example.vegait.api.response.ProductsDTO
 import com.example.vegait.entity.ProductCreatedEntity
-import com.example.vegait.toEntity
-import com.example.vegait.toProductRequest
+import com.example.vegait.mapper.toEntity
+import com.example.vegait.mapper.toProductRequest
 
 class DummyRepositoryImpl(private val api: DummyApi): DummyRepository {
 

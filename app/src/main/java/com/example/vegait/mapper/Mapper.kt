@@ -1,4 +1,4 @@
-package com.example.vegait
+package com.example.vegait.mapper
 
 import com.example.vegait.api.response.ProductDeletedDTO
 import com.example.vegait.api.response.ProductDetailDTO
