@@ -3,6 +3,7 @@ package com.example.vegait.api
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
@@ -21,8 +22,9 @@ interface DummyService {
     @GET("products/{id}")
     suspend fun productDetail(@Path("id") id: Int): ProductDetailResponse
 
-    //@PUT("products/{id}")
-    //suspend fun update(/*@Path("id") id: Int*/)
+    @Headers("Content-Type: application/json")
+    @PUT("products/{id}")
+    suspend fun update(@Body request: UpdateProductRequest, @Path("id") id: Int): ProductUpdateResponse
 
     //@POST("products/add")
     //suspend fun create(/*@Body request: ProductAddRequest*/)

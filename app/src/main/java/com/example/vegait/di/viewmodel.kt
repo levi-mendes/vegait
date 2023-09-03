@@ -3,6 +3,7 @@ package com.example.vegait.di
 import com.example.vegait.DeleteProductUseCase
 import com.example.vegait.ListProductUseCase
 import com.example.vegait.ProductDetailUseCase
+import com.example.vegait.UpdateProductUseCase
 import com.example.vegait.api.ListProductsViewModel
 import com.example.vegait.api.ProductDetailViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -17,7 +18,8 @@ val viewModel = module {
     viewModel {
         ProductDetailViewModel(
             ProductDetailUseCase(repository = get()),
-            DeleteProductUseCase(repository = get())
+            DeleteProductUseCase(repository = get()),
+            UpdateProductUseCase(repository = get())
         )
     }
 }

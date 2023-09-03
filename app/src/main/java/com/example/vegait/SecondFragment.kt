@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.vegait.databinding.FragmentSecondBinding
@@ -12,7 +11,6 @@ import br.com.concrete.canarinho.watcher.ValorMonetarioWatcher
 import com.bumptech.glide.Glide
 import com.example.vegait.api.ProductDetailViewModel
 import com.example.vegait.api.RequestState
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -62,6 +60,8 @@ class SecondFragment : Fragment() {
             etStock.setText(product.stock.toString())
             etBrand.setText(product.brand)
             etCategory.setText(product.category)
+
+            binding.btSave.setOnClickListener { viewModel.updateProduct(product = product) }
         }
     }
 
@@ -90,6 +90,20 @@ class SecondFragment : Fragment() {
                 is RequestState.Error -> {
                     binding.pbLoading.hide()
                     Toast.makeText(requireContext(), "erro na simulacao de delete", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+
+        viewModel.updateProduct.observe(requireActivity()) {
+            when (it) {
+                is RequestState.Success -> {
+                    binding.pbLoading.hide()
+                    Toast.makeText(requireContext(), "UPDATE simulation succesfully !!!", Toast.LENGTH_LONG).show()
+                }
+                is RequestState.Loading -> binding.pbLoading.show()
+                is RequestState.Error -> {
+                    binding.pbLoading.hide()
+                    Toast.makeText(requireContext(), "erro na simulacao de UPDATE", Toast.LENGTH_LONG).show()
                 }
             }
         }

@@ -4,6 +4,7 @@ import com.example.vegait.DummyRepository
 
 import com.example.vegait.ProductEntity
 import com.example.vegait.toEntity
+import com.example.vegait.toProductRequest
 
 class DummyRepositoryImpl(private val api: DummyApi): DummyRepository {
 
@@ -20,8 +21,11 @@ class DummyRepositoryImpl(private val api: DummyApi): DummyRepository {
 
     }
 
-    override suspend fun update() {
+    override suspend fun update(product: ProductEntity): ProductEntity {
+        val response: ProductEntity =
+            api.update(product = product.toProductRequest()).toEntity()
 
+        return response
     }
 
     override suspend fun delete(id: Int): ProductEntity {
