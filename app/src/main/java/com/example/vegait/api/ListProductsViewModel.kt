@@ -23,6 +23,5 @@ class ListProductsViewModel(
             val products = useCase.products()
             _products.value = RequestState.Success(products)
         }
-
     }
 }
