@@ -7,4 +7,13 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="text_bt_try_again">Try again</string>
+    <string name="text_description">Descrição</string>
+    <string name="text_price">Preço</string>
+    <string name="text_discount">Desconto</string>
+    <string name="text_rating">Avaliação</string>
+    <string name="text_stock">Estoque</string>
+    <string name="text_brand">Marca</string>
+    <string name="text_category">Categoria</string>
+    <string name="text_bt_save">salvar</string>
+    <string name="text_bt_delete">excluir</string>
 </resources>
