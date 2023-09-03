@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.concrete.canarinho.watcher.ValorMonetarioWatcher
 import com.bumptech.glide.Glide
-import com.example.vegait.InternetUtil
 import com.example.vegait.entity.ProductEntity
 import com.example.vegait.R
 import com.example.vegait.viewmodel.ListProductsViewModel
 import com.example.vegait.api.RequestState
 import com.example.vegait.databinding.FragmentFirstBinding
 import com.example.vegait.databinding.ItemProductListBinding
+import com.example.vegait.isOnline
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -62,8 +62,8 @@ class FirstFragment : Fragment() {
     }
 
     private fun callListProducts() {
-        if (!InternetUtil.isNetworkConnected) {
-            Toast.makeText(requireContext(), "sem conexão com a internet", Toast.LENGTH_LONG).show()
+        if (!isOnline(requireContext())) {
+            Toast.makeText(requireContext(), "sem conexão com a internet", Toast.LENGTH_SHORT).show()
             binding.btTryAgain.visibility = View.VISIBLE
             binding.pbLoading.hide()
         } else {
