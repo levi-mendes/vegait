@@ -5,27 +5,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.vegait.databinding.FragmentSecondBinding
 import br.com.concrete.canarinho.watcher.ValorMonetarioWatcher
 import com.bumptech.glide.Glide
+import com.example.vegait.R
 import com.example.vegait.entity.ProductEntity
 import com.example.vegait.viewmodel.ProductDetailViewModel
 import com.example.vegait.api.RequestState
+import com.example.vegait.databinding.FragmentProductDetailsBinding
+import com.example.vegait.fragment.BaseFragment
 import com.example.vegait.util.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class ProductDetailsFragment : BaseFragment() {
 
     private val viewModel: ProductDetailViewModel by viewModel()
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentProductDetailsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View {
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentProductDetailsBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -93,7 +95,7 @@ class SecondFragment : Fragment() {
                 is RequestState.Loading -> binding.pbLoading.show()
                 is RequestState.Error -> {
                     binding.pbLoading.hide()
-                    showToast(requireContext(), "Erro ao tentar obter detalhe do produto")
+                    showToast(requireContext(), R.string.text_error_by_get_product_detail)
                 }
             }
         }
@@ -102,12 +104,12 @@ class SecondFragment : Fragment() {
             when (it) {
                 is RequestState.Success -> {
                     binding.pbLoading.hide()
-                    showToast(requireContext(), "delete simulation succesfully !!!")
+                    showToast(requireContext(), R.string.text_delete_simulation_succesfully)
                 }
                 is RequestState.Loading -> binding.pbLoading.show()
                 is RequestState.Error -> {
                     binding.pbLoading.hide()
-                    showToast(requireContext(), "erro na simulacao de delete")
+                    showToast(requireContext(), R.string.text_error_delete_simulation)
                 }
             }
         }
@@ -116,12 +118,12 @@ class SecondFragment : Fragment() {
             when (it) {
                 is RequestState.Success -> {
                     binding.pbLoading.hide()
-                    showToast(requireContext(), "simulação de UPDATE com sucesso")
+                    showToast(requireContext(), R.string.text_update_simulation_successfully)
                 }
                 is RequestState.Loading -> binding.pbLoading.show()
                 is RequestState.Error -> {
                     binding.pbLoading.hide()
-                    showToast(requireContext(), "Erro na simulação de UPDATE")
+                    showToast(requireContext(), R.string.text_error_update_simulation)
                 }
             }
         }
@@ -130,12 +132,12 @@ class SecondFragment : Fragment() {
             when (it) {
                 is RequestState.Success -> {
                     binding.pbLoading.hide()
-                    showToast(requireContext(), "ADD simulation succesfully !!!")
+                    showToast(requireContext(), R.string.text_insert_simulation_successfully)
                 }
                 is RequestState.Loading -> binding.pbLoading.show()
                 is RequestState.Error -> {
                     binding.pbLoading.hide()
-                    showToast(requireContext(), "erro na simulacao de ADD")
+                    showToast(requireContext(), R.string.text_error_insert_simulation)
                 }
             }
         }

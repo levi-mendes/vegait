@@ -3,8 +3,7 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Produtos</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
+    <string name="second_fragment_label">Detalhes do produto</string>
     <string name="previous">Previous</string>
     <string name="text_bt_try_again">Try again</string>
     <string name="text_description">Descrição</string>
@@ -14,7 +13,17 @@
     <string name="text_stock">Estoque</string>
     <string name="text_brand">Marca</string>
     <string name="text_category">Categoria</string>
-    <string name="text_bt_save">salvar</string>
-    <string name="text_bt_delete">excluir</string>
-    <string name="text_error_no_internet_connection">sem conexão com a internet</string>
+    <string name="text_bt_save">Salvar</string>
+    <string name="text_bt_delete">Excluir</string>
+    <string name="text_error_no_internet_connection">Sem conexão com a internet</string>
+    <string name="text_alert_atention">Atenção</string>
+    <string name="text_bt_ok_alert">OK</string>
+    <string name="text_error_by_get_product_detail">Erro ao tentar obter DETALHE do produto</string>
+    <string name="text_delete_simulation_succesfully">Simulação DE DELETE com sucesso</string>
+    <string name="text_error_delete_simulation">Erro na simulação de DELETE</string>
+    <string name="text_update_simulation_successfully">Simulação de UPDATE com sucesso</string>
+    <string name="text_error_update_simulation">Erro na simulação de UPDATE</string>
+    <string name="text_insert_simulation_successfully">Simulação de INSERÇÃO com sucesso</string>
+    <string name="text_error_insert_simulation">Erro na simulação de INSERÇÃO</string>
+    <string name="text_error_listing_products">Erro ao tentar listar produtos</string>
 </resources>

@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.vegait.listing.FirstFragment"
+        android:name="com.example.vegait.listing.ProductListingFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_product_listing">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -17,9 +17,9 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.vegait.details.SecondFragment"
+        android:name="com.example.vegait.details.ProductDetailsFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_product_details">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
@@ -31,11 +31,4 @@
             app:argType="integer" />
 
     </fragment>
-
-    <!--
-        <argument
-            android:name="id_musica"
-            android:defaultValue="0"
-            app:argType="integer" />
-    -->
 </navigation>

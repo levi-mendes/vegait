@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,27 +15,25 @@ import com.example.vegait.entity.ProductEntity
 import com.example.vegait.R
 import com.example.vegait.viewmodel.ListProductsViewModel
 import com.example.vegait.api.RequestState
-import com.example.vegait.databinding.FragmentFirstBinding
+import com.example.vegait.databinding.FragmentProductListingBinding
 import com.example.vegait.databinding.ItemProductListBinding
+import com.example.vegait.fragment.BaseFragment
 import com.example.vegait.util.isOnline
-import com.example.vegait.util.showToast
+import com.example.vegait.util.showAlert
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class ProductListingFragment : BaseFragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentProductListingBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ListProductsViewModel by viewModel()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View {
+        _binding = FragmentProductListingBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -64,7 +61,7 @@ class FirstFragment : Fragment() {
 
     private fun callListProducts() {
         if (!isOnline(requireContext())) {
-            showToast(requireContext(), R.string.text_error_no_internet_connection)
+            showAlert(requireContext(), R.string.text_error_no_internet_connection)
             binding.btTryAgain.visibility = View.VISIBLE
             binding.pbLoading.hide()
             return
@@ -85,7 +82,7 @@ class FirstFragment : Fragment() {
                 } is RequestState.Error -> {
                     binding.btTryAgain.visibility = View.VISIBLE
                     binding.pbLoading.hide()
-                    showToast(requireContext(), "Erro ao tentar listar produtos")
+                    showAlert(requireContext(), R.string.text_error_listing_products)
                 }
             }
         }
@@ -97,8 +94,8 @@ class FirstFragment : Fragment() {
     }
 
     class ProductListAdapter(
-        val context: Fragment,
-        val products: List<ProductEntity>) :
+        private val context: Fragment,
+        private val products: List<ProductEntity>) :
         RecyclerView.Adapter<ProductListAdapter.MyViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
