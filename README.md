@@ -17,6 +17,8 @@ READ ( GET ) = ---- https://dummyjson.com/products/1 ( Single product ) -----   
 UPDATE ( PUT ) = https://dummyjson.com/products/1<br />
 DELETE ( DELETE ) = https://dummyjson.com/products/1 <br /><br />
 
+Observação: As operações CREATE ( POST ), UPDATE ( PUT ) e DELETE ( DELETE ) não são persistidas no servidor.
+
 
 Link direto para o apk de instalação do app:<br />
 https://github.com/levi-mendes/vegait/blob/master/vegait-app-debug.apk
