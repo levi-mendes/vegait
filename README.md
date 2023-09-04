@@ -12,6 +12,7 @@ ConstraintLayout: Criação das telas<br /> <br />
 
 API Publica utilizada no pprorjeto:<br />
 
+Video com o app sendo executado:
 https://github.com/levi-mendes/vegait/assets/13037757/fe2ca53e-3f79-41fd-a771-a94f727541a9
 
 
