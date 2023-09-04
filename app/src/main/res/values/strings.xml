@@ -26,4 +26,6 @@
     <string name="text_insert_simulation_successfully">Simulação de INSERÇÃO com sucesso</string>
     <string name="text_error_insert_simulation">Erro na simulação de INSERÇÃO</string>
     <string name="text_error_listing_products">Erro ao tentar listar produtos</string>
+    <string name="label_title">Título</string>
+    <string name="text_error_title_empty">Informe o título</string>
 </resources>

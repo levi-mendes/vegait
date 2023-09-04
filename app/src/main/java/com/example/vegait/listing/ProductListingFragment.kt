@@ -13,6 +13,7 @@ import br.com.concrete.canarinho.watcher.ValorMonetarioWatcher
 import com.bumptech.glide.Glide
 import com.example.vegait.entity.ProductEntity
 import com.example.vegait.R
+import com.example.vegait.activity.MainActivity
 import com.example.vegait.viewmodel.ListProductsViewModel
 import com.example.vegait.api.RequestState
 import com.example.vegait.databinding.FragmentProductListingBinding
@@ -21,6 +22,7 @@ import com.example.vegait.details.ProductDetailsFragment.Companion.EXTRA_PRODUCT
 import com.example.vegait.fragment.BaseFragment
 import com.example.vegait.util.isOnline
 import com.example.vegait.util.showAlert
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -57,6 +59,12 @@ class ProductListingFragment : BaseFragment() {
         binding.btTryAgain.setOnClickListener {
             callListProducts()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as MainActivity).findViewById<FloatingActionButton>(R.id.fab)!!
+            .visibility = View.VISIBLE
     }
 
     private fun callListProducts() {

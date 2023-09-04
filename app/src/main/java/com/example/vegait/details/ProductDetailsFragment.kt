@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.vegait.R
+import com.example.vegait.activity.MainActivity
 import com.example.vegait.entity.ProductEntity
 import com.example.vegait.viewmodel.ProductDetailViewModel
 import com.example.vegait.api.RequestState
@@ -14,6 +15,7 @@ import com.example.vegait.databinding.FragmentProductDetailsBinding
 import com.example.vegait.fragment.BaseFragment
 import com.example.vegait.util.moneyMask
 import com.example.vegait.util.showToast
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -35,7 +37,7 @@ class ProductDetailsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        (requireActivity() as  MainActivity).findViewById<FloatingActionButton>(R.id.fab)!!.visibility = GONE
+        hideFab()
         addObserve()
         val productId = arguments?.getInt(EXTRA_PRODUCT_ID)
 
@@ -51,12 +53,24 @@ class ProductDetailsFragment : BaseFragment() {
         addProduct?.let {
             if (it) {
                 binding.btSave.setOnClickListener {
+                    if (binding.etTitle.text!!.isEmpty()) {
+                        binding.tilTitle.error = getString(R.string.text_error_title_empty)
+                        binding.etTitle.requestFocus()
+                        return@setOnClickListener
+                    }
+
+                    binding.tilTitle.error = null
                     viewModel.addProduct(binding.etTitle.text.toString())
                 }
 
                 binding.btDelete.visibility = View.INVISIBLE
             }
         }
+    }
+
+    private fun hideFab() {
+        (requireActivity() as  MainActivity).findViewById<FloatingActionButton>(R.id.fab)!!
+            .visibility = View.GONE
     }
 
     private fun loadData(product: ProductEntity) {
