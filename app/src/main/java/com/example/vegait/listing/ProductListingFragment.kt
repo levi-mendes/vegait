@@ -17,6 +17,7 @@ import com.example.vegait.viewmodel.ListProductsViewModel
 import com.example.vegait.api.RequestState
 import com.example.vegait.databinding.FragmentProductListingBinding
 import com.example.vegait.databinding.ItemProductListBinding
+import com.example.vegait.details.ProductDetailsFragment.Companion.EXTRA_PRODUCT_ID
 import com.example.vegait.fragment.BaseFragment
 import com.example.vegait.util.isOnline
 import com.example.vegait.util.showAlert
@@ -41,7 +42,6 @@ class ProductListingFragment : BaseFragment() {
     private fun configList() {
         binding.rvPoducts.apply {
             layoutManager = LinearLayoutManager(context)
-//            addItemDecoration(LineItemDecoration(context, LinearLayout.VERTICAL))
             setHasFixedSize(true)
         }
     }
@@ -128,7 +128,7 @@ class ProductListingFragment : BaseFragment() {
                     tvPrice.addTextChangedListener(moneyMask())
                     tvPrice.text = product.price.toString()
                     root.setOnClickListener {
-                        val bundle = bundleOf("product_id" to product.id)
+                        val bundle = bundleOf(EXTRA_PRODUCT_ID to product.id)
                         fragment.findNavController().navigate(
                             R.id.action_FirstFragment_to_SecondFragment, bundle)
                     }

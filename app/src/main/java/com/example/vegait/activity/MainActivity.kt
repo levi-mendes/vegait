@@ -9,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.vegait.R
 import com.example.vegait.databinding.ActivityMainBinding
+import com.example.vegait.details.ProductDetailsFragment.Companion.EXTRA_ADD_PRODUCT
 
 class MainActivity : BaseActivity() {
 
@@ -29,7 +30,7 @@ class MainActivity : BaseActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.fab.setOnClickListener {
-            val bundle = bundleOf("add_product" to true)
+            val bundle = bundleOf(EXTRA_ADD_PRODUCT to true)
             navController.navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
         }
     }

@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.com.concrete.canarinho.watcher.ValorMonetarioWatcher
 import com.bumptech.glide.Glide
 import com.example.vegait.R
 import com.example.vegait.entity.ProductEntity
@@ -13,6 +12,7 @@ import com.example.vegait.viewmodel.ProductDetailViewModel
 import com.example.vegait.api.RequestState
 import com.example.vegait.databinding.FragmentProductDetailsBinding
 import com.example.vegait.fragment.BaseFragment
+import com.example.vegait.util.moneyMask
 import com.example.vegait.util.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -32,19 +32,12 @@ class ProductDetailsFragment : BaseFragment() {
 
     }
 
-    fun moneyMask(): ValorMonetarioWatcher {
-        return ValorMonetarioWatcher.Builder()
-            .comMantemZerosAoLimpar()
-            .comSimboloReal()
-            .build()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 //        (requireActivity() as  MainActivity).findViewById<FloatingActionButton>(R.id.fab)!!.visibility = GONE
         addObserve()
-        val productId = arguments?.getInt("product_id")
+        val productId = arguments?.getInt(EXTRA_PRODUCT_ID)
 
         productId?.let {
             if (it > 0) {
@@ -53,7 +46,7 @@ class ProductDetailsFragment : BaseFragment() {
             }
         }
 
-        val addProduct = arguments?.getBoolean("add_product")
+        val addProduct = arguments?.getBoolean(EXTRA_ADD_PRODUCT)
 
         addProduct?.let {
             if (it) {
@@ -74,6 +67,7 @@ class ProductDetailsFragment : BaseFragment() {
                 .into(binding.ivProductBig)
             etTitle.setText(product.title)
             etDescription.setText(product.description)
+            etPrice.addTextChangedListener(moneyMask())
             etPrice.setText(product.price.toString())
             etDiscount.setText(product.discountPercentage.toString())
             etRating.setText(product.rating.toString())
@@ -146,5 +140,10 @@ class ProductDetailsFragment : BaseFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val EXTRA_PRODUCT_ID = "product_id"
+        const val EXTRA_ADD_PRODUCT = "add_product"
     }
 }
