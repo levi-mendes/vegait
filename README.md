@@ -15,6 +15,10 @@ https://dummyjson.com/docs/products<br />
 CREATE ( POST ) = https://dummyjson.com/products/add<br />
 READ ( GET ) = ---- https://dummyjson.com/products/1 ( Single product ) -----     ----- https://dummyjson.com/products ( ALL product ) ----- <br />
 UPDATE ( PUT ) = https://dummyjson.com/products/1<br />
-DELETE ( DELETE ) = https://dummyjson.com/products/1
+DELETE ( DELETE ) = https://dummyjson.com/products/1 <br /><br />
+
+
+Link direto para o apk de instalação do app:<br />
+https://github.com/levi-mendes/vegait/blob/master/vegait-app-debug.apk
 
 
