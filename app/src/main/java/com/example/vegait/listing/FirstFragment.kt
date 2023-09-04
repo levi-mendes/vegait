@@ -19,6 +19,7 @@ import com.example.vegait.api.RequestState
 import com.example.vegait.databinding.FragmentFirstBinding
 import com.example.vegait.databinding.ItemProductListBinding
 import com.example.vegait.util.isOnline
+import com.example.vegait.util.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -63,12 +64,13 @@ class FirstFragment : Fragment() {
 
     private fun callListProducts() {
         if (!isOnline(requireContext())) {
-            Toast.makeText(requireContext(), "sem conexão com a internet", Toast.LENGTH_SHORT).show()
+            showToast(requireContext(), R.string.text_error_no_internet_connection)
             binding.btTryAgain.visibility = View.VISIBLE
             binding.pbLoading.hide()
-        } else {
-            viewModel.listProducts()
+            return
         }
+
+        viewModel.listProducts()
     }
 
     private fun addObservable() {
@@ -77,18 +79,15 @@ class FirstFragment : Fragment() {
                 is RequestState.Success -> {
                     binding.pbLoading.hide()
                     binding.rvPoducts.adapter = ProductListAdapter(this, it.data)
-                }
-                is RequestState.Loading -> {
+                } is RequestState.Loading -> {
                     binding.btTryAgain.visibility = View.GONE
                     binding.pbLoading.show()
-                }
-                is RequestState.Error -> {
+                } is RequestState.Error -> {
                     binding.btTryAgain.visibility = View.VISIBLE
                     binding.pbLoading.hide()
-                    Toast.makeText(requireContext(), "", Toast.LENGTH_LONG).show()
+                    showToast(requireContext(), "Erro ao tentar listar produtos")
                 }
             }
-
         }
     }
 

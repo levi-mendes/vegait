@@ -5,13 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.vegait.databinding.FragmentSecondBinding
 import br.com.concrete.canarinho.watcher.ValorMonetarioWatcher
 import com.bumptech.glide.Glide
 import com.example.vegait.entity.ProductEntity
 import com.example.vegait.viewmodel.ProductDetailViewModel
 import com.example.vegait.api.RequestState
+import com.example.vegait.util.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -93,7 +93,7 @@ class SecondFragment : Fragment() {
                 is RequestState.Loading -> binding.pbLoading.show()
                 is RequestState.Error -> {
                     binding.pbLoading.hide()
-                    Toast.makeText(requireContext(), "", Toast.LENGTH_LONG).show()
+                    showToast(requireContext(), "Erro ao tentar obter detalhe do produto")
                 }
             }
         }
@@ -102,12 +102,12 @@ class SecondFragment : Fragment() {
             when (it) {
                 is RequestState.Success -> {
                     binding.pbLoading.hide()
-                    Toast.makeText(requireContext(), "delete simulation succesfully !!!", Toast.LENGTH_LONG).show()
+                    showToast(requireContext(), "delete simulation succesfully !!!")
                 }
                 is RequestState.Loading -> binding.pbLoading.show()
                 is RequestState.Error -> {
                     binding.pbLoading.hide()
-                    Toast.makeText(requireContext(), "erro na simulacao de delete", Toast.LENGTH_LONG).show()
+                    showToast(requireContext(), "erro na simulacao de delete")
                 }
             }
         }
@@ -116,12 +116,12 @@ class SecondFragment : Fragment() {
             when (it) {
                 is RequestState.Success -> {
                     binding.pbLoading.hide()
-                    Toast.makeText(requireContext(), "UPDATE simulation succesfully !!!", Toast.LENGTH_LONG).show()
+                    showToast(requireContext(), "simulação de UPDATE com sucesso")
                 }
                 is RequestState.Loading -> binding.pbLoading.show()
                 is RequestState.Error -> {
                     binding.pbLoading.hide()
-                    Toast.makeText(requireContext(), "erro na simulacao de UPDATE", Toast.LENGTH_LONG).show()
+                    showToast(requireContext(), "Erro na simulação de UPDATE")
                 }
             }
         }
@@ -130,12 +130,12 @@ class SecondFragment : Fragment() {
             when (it) {
                 is RequestState.Success -> {
                     binding.pbLoading.hide()
-                    Toast.makeText(requireContext(), "ADD simulation succesfully !!!", Toast.LENGTH_LONG).show()
+                    showToast(requireContext(), "ADD simulation succesfully !!!")
                 }
                 is RequestState.Loading -> binding.pbLoading.show()
                 is RequestState.Error -> {
                     binding.pbLoading.hide()
-                    Toast.makeText(requireContext(), "erro na simulacao de ADD", Toast.LENGTH_LONG).show()
+                    showToast(requireContext(), "erro na simulacao de ADD")
                 }
             }
         }

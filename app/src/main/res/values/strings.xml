@@ -16,4 +16,5 @@
     <string name="text_category">Categoria</string>
     <string name="text_bt_save">salvar</string>
     <string name="text_bt_delete">excluir</string>
+    <string name="text_error_no_internet_connection">sem conexão com a internet</string>
 </resources>
