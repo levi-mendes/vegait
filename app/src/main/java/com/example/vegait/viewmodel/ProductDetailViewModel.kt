@@ -40,8 +40,12 @@ class ProductDetailViewModel(
         _product.value = RequestState.Loading
 
         viewModelScope.launch {
-            val product = useCase.product(id)
-            _product.value = RequestState.Success(product)
+            try {
+                val product = useCase.product(id)
+                _product.value = RequestState.Success(product)
+            } catch (e: Exception) {
+                _product.value = RequestState.Error(e)
+            }
         }
     }
 
@@ -49,8 +53,12 @@ class ProductDetailViewModel(
         _deleteProduct.value = RequestState.Loading
 
         viewModelScope.launch {
-            val product = useCaseDelete.deleteProduct(id = id)
-            _deleteProduct.value = RequestState.Success(product)
+            try {
+                val product = useCaseDelete.deleteProduct(id = id)
+                _deleteProduct.value = RequestState.Success(product)
+            } catch (e: Exception) {
+                _deleteProduct.value = RequestState.Error(e)
+            }
         }
     }
 
@@ -58,8 +66,12 @@ class ProductDetailViewModel(
         _updateProduct.value = RequestState.Loading
 
         viewModelScope.launch {
-            val response = useCaseUpdate.update(product = product)
-            _updateProduct.value = RequestState.Success(response)
+            try {
+                val response = useCaseUpdate.update(product = product)
+                _updateProduct.value = RequestState.Success(response)
+            } catch (e: Exception) {
+                _updateProduct.value = RequestState.Error(e)
+            }
         }
     }
 
@@ -67,8 +79,12 @@ class ProductDetailViewModel(
         _addProduct.value = RequestState.Loading
 
         viewModelScope.launch {
-            val response = useCaseAdd.addProduct(title = title)
-            _addProduct.value = RequestState.Success(response)
+            try {
+                val response = useCaseAdd.addProduct(title = title)
+                _addProduct.value = RequestState.Success(response)
+            } catch (e: Exception) {
+                _addProduct.value = RequestState.Error(e)
+            }
         }
     }
 }
