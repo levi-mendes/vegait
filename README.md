@@ -1,6 +1,6 @@
 # vegait
 
-Kotlin: Kotlin<br />
+Linguagem: Kotlin<br />
 Koin: Injeção de dependencia<br />
 Retrofit: Consumo de API<br />
 Okhttp: Interceptação de requests<br />
