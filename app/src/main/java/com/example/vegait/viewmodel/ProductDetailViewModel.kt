@@ -40,11 +40,12 @@ class ProductDetailViewModel(
         _product.value = RequestState.Loading
 
         viewModelScope.launch {
-            try {
-                val product = useCase.product(id)
-                _product.value = RequestState.Success(product)
-            } catch (e: Exception) {
-                _product.value = RequestState.Error(e)
+            runCatching {
+                useCase.product(id)
+            }.onSuccess {
+                _product.value = RequestState.Success(it)
+            }.onFailure {
+                _product.value = RequestState.Error(it)
             }
         }
     }
@@ -53,11 +54,12 @@ class ProductDetailViewModel(
         _deleteProduct.value = RequestState.Loading
 
         viewModelScope.launch {
-            try {
-                val product = useCaseDelete.deleteProduct(id = id)
-                _deleteProduct.value = RequestState.Success(product)
-            } catch (e: Exception) {
-                _deleteProduct.value = RequestState.Error(e)
+            runCatching {
+                useCaseDelete.deleteProduct(id = id)
+            }.onSuccess {
+                _deleteProduct.value = RequestState.Success(it)
+            }.onFailure {
+                _deleteProduct.value = RequestState.Error(it)
             }
         }
     }
@@ -66,11 +68,12 @@ class ProductDetailViewModel(
         _updateProduct.value = RequestState.Loading
 
         viewModelScope.launch {
-            try {
-                val response = useCaseUpdate.update(product = product)
-                _updateProduct.value = RequestState.Success(response)
-            } catch (e: Exception) {
-                _updateProduct.value = RequestState.Error(e)
+            runCatching {
+                useCaseUpdate.update(product = product)
+            }.onSuccess {
+                _updateProduct.value = RequestState.Success(it)
+            }.onFailure {
+                _updateProduct.value = RequestState.Error(it)
             }
         }
     }
@@ -79,11 +82,12 @@ class ProductDetailViewModel(
         _addProduct.value = RequestState.Loading
 
         viewModelScope.launch {
-            try {
-                val response = useCaseAdd.addProduct(title = title)
-                _addProduct.value = RequestState.Success(response)
-            } catch (e: Exception) {
-                _addProduct.value = RequestState.Error(e)
+            runCatching {
+                useCaseAdd.addProduct(title = title)
+            }.onSuccess {
+                _addProduct.value = RequestState.Success(it)
+            }.onFailure {
+                _addProduct.value = RequestState.Error(it)
             }
         }
     }

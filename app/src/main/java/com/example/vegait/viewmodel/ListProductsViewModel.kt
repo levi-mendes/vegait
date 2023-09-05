@@ -21,11 +21,12 @@ class ListProductsViewModel(
         _products.value = RequestState.Loading
 
         viewModelScope.launch {
-            try {
-                val products = useCase.products()
-                _products.value = RequestState.Success(products)
-            } catch (e: Exception) {
-                _products.value = RequestState.Error(e)
+            runCatching {
+                useCase.products()
+            }.onSuccess {
+                _products.value = RequestState.Success(it)
+            }.onFailure {
+                _products.value = RequestState.Error(it)
             }
         }
     }
