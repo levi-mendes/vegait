@@ -2,6 +2,7 @@
 
 Linguagem: Kotlin<br />
 Koin: Injeção de dependencia<br />
+Coroutines: Processamento em background<br />
 Retrofit: Consumo de API<br />
 Okhttp: Interceptação de requests<br />
 MVVM: Padrão arquitetural<br />
